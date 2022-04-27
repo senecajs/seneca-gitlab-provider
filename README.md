@@ -1,17 +1,17 @@
-![Seneca Github-Provider](http://senecajs.org/files/assets/seneca-logo.png)
+![Seneca Gitlab-Provider](http://senecajs.org/files/assets/seneca-logo.png)
 
-> _Seneca Github-Provider_ is a plugin for [Seneca](http://senecajs.org)
+> _Seneca Gitlab-Provider_ is a plugin for [Seneca](http://senecajs.org)
 
 
-Provides access to the Github API using the Seneca *provider*
-convention. Github API entities are represented as Seneca entities so
+Provides access to the Gitlab API using the Seneca *provider*
+convention. Gitlab API entities are represented as Seneca entities so
 that they can be accessed using the Seneca entity API and messages.
 
 
-[![npm version](https://img.shields.io/npm/v/@seneca/github-provider.svg)](https://npmjs.com/package/@seneca/github-provider)
-[![build](https://github.com/senecajs/seneca-github-provider/actions/workflows/build.yml/badge.svg)](https://github.com/senecajs/seneca-github-provider/actions/workflows/build.yml)
-[![Coverage Status](https://coveralls.io/repos/github/senecajs/seneca-github-provider/badge.svg?branch=main)](https://coveralls.io/github/senecajs/seneca-github-provider?branch=main)
-[![Known Vulnerabilities](https://snyk.io/test/github/senecajs/seneca-github-provider/badge.svg)](https://snyk.io/test/github/senecajs/seneca-github-provider)
+[![npm version](https://img.shields.io/npm/v/@seneca/gitlab-provider.svg)](https://npmjs.com/package/@seneca/gitlab-provider)
+[![build](https://github.com/senecajs/seneca-gitlab-provider/actions/workflows/build.yml/badge.svg)](https://github.com/senecajs/seneca-gitlab-provider/actions/workflows/build.yml)
+[![Coverage Status](https://coveralls.io/repos/github/senecajs/seneca-gitlab-provider/badge.svg?branch=main)](https://coveralls.io/github/senecajs/seneca-gitlab-provider?branch=main)
+[![Known Vulnerabilities](https://snyk.io/test/github/senecajs/seneca-gitlab-provider/badge.svg)](https://snyk.io/test/github/senecajs/seneca-gitlab-provider)
 [![DeepScan grade](https://deepscan.io/api/teams/5016/projects/19462/branches/505954/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5016&pid=19462&bid=505954)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f76e83896b731bb5d609/maintainability)](https://codeclimate.com/github/senecajs/seneca-github-provider/maintainability)
 
@@ -25,38 +25,38 @@ that they can be accessed using the Seneca entity API and messages.
 
 ```js
 
-// Setup - get the key value (<SECRET>) separately from a vault or
+// Setup - get the key value (<ACCESS_TOKEN>) separately from a vault or
 // environment variable.
 Seneca()
   .use('provider', {
     provider: {
-      github: {
+      gitlab: {
         keys: {
           api: {
-            value: '<SECRET>'
+            value: '<ACCESS_TOKEN>'
           },
         }
       }
     }
   })
-  .use('github-provider')
+  .use('gitlab-provider')
 
-let repo = await seneca.entity('provider/github/repo')
-  .load$('senecajs/github-api-test')
+let project = await seneca.entity('provider/gitlab/project')
+  .load$({id: <PROJECt_ID>})
 
-Console.log('REPO DATA', repo)
+console.log('PROJECT DATA', project)
 
-repo.description = 'New description'
-repo = await repo.save$()
+project.description = 'New description'
+project = await project.save$()
 
-Console.log('UPDATED DATA', repo)
+console.log('UPDATED DATA', project)
 
 ```
 
 ## Install
 
 ```sh
-$ npm install @seneca/github-provider
+$ npm install @seneca/gitlab-provider
 ```
 
 
@@ -73,7 +73,7 @@ Set plugin options when loading with:
 ```js
 
 
-seneca.use('GithubProvider', { name: value, ... })
+seneca.use('GitlabProvider', { name: value, ... })
 
 
 ```
@@ -91,9 +91,9 @@ seneca.use('GithubProvider', { name: value, ... })
 
 ## Action Patterns
 
-* [role:entity,base:github,cmd:load,name:repo,zone:provider](#-roleentitybasegithubcmdloadnamerepozoneprovider-)
-* [role:entity,base:github,cmd:save,name:repo,zone:provider](#-roleentitybasegithubcmdsavenamerepozoneprovider-)
-* [sys:provider,get:info,provider:github](#-sysprovidergetinfoprovidergithub-)
+* [role:entity,base:gitlab,cmd:load,name:project,zone:provider](#-roleentitybasegithubcmdloadnamerepozoneprovider-)
+* [role:entity,base:gitlab,cmd:save,name:project,zone:provider](#-roleentitybasegithubcmdsavenamerepozoneprovider-)
+* [sys:provider,get:info,provider:gitlab](#-sysprovidergetinfoprovidergithub-)
 
 
 <!--END:action-list-->
@@ -103,21 +103,21 @@ seneca.use('GithubProvider', { name: value, ... })
 
 ## Action Descriptions
 
-### &laquo; `role:entity,base:github,cmd:load,name:repo,zone:provider` &raquo;
+### &laquo; `role:entity,base:gitlab,cmd:load,name:project,zone:provider` &raquo;
 
 Load GitHub repository data into an entity.
 
 
 
 ----------
-### &laquo; `role:entity,base:github,cmd:save,name:repo,zone:provider` &raquo;
+### &laquo; `role:entity,base:gitlab,cmd:save,name:project,zone:provider` &raquo;
 
 Update GitHub repository data from an entity.
 
 
 
 ----------
-### &laquo; `sys:provider,get:info,provider:github` &raquo;
+### &laquo; `sys:provider,get:info,provider:project` &raquo;
 
 Get information about the provider.
 
