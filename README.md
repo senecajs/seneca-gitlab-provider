@@ -66,22 +66,7 @@ $ npm install @seneca/gitlab-provider
 
 ## Options
 
-* `debug` : boolean <i><small>false</small></i>
-
-
-Set plugin options when loading with:
-```js
-
-
-seneca.use('GitlabProvider', { name: value, ... })
-
-
-```
-
-
-<small>Note: <code>foo.bar</code> in the list above means 
-<code>{ foo: { bar: ... } }</code></small> 
-
+*None.*
 
 
 <!--END:options-->
@@ -91,9 +76,9 @@ seneca.use('GitlabProvider', { name: value, ... })
 
 ## Action Patterns
 
-* [role:entity,base:gitlab,cmd:load,name:project,zone:provider](#-roleentitybasegithubcmdloadnamerepozoneprovider-)
-* [role:entity,base:gitlab,cmd:save,name:project,zone:provider](#-roleentitybasegithubcmdsavenamerepozoneprovider-)
-* [sys:provider,get:info,provider:gitlab](#-sysprovidergetinfoprovidergithub-)
+* ["role":"entity","base":"gitlab","cmd":"load","name":"project","zone":"provider"](#-roleentitybasegitlabcmdloadnameprojectzoneprovider-)
+* ["role":"entity","base":"gitlab","cmd":"save","name":"project","zone":"provider"](#-roleentitybasegitlabcmdsavenameprojectzoneprovider-)
+* ["sys":"provider","get":"info","provider":"gitlab"](#-sysprovidergetinfoprovidergitlab-)
 
 
 <!--END:action-list-->
@@ -103,21 +88,21 @@ seneca.use('GitlabProvider', { name: value, ... })
 
 ## Action Descriptions
 
-### &laquo; `role:entity,base:gitlab,cmd:load,name:project,zone:provider` &raquo;
+### &laquo; `"role":"entity","base":"gitlab","cmd":"load","name":"project","zone":"provider"` &raquo;
 
-Load GitHub repository data into an entity.
-
-
-
-----------
-### &laquo; `role:entity,base:gitlab,cmd:save,name:project,zone:provider` &raquo;
-
-Update GitHub repository data from an entity.
+Load the Gitlab project data into an entity, through a project id informed as a parameter.
 
 
 
 ----------
-### &laquo; `sys:provider,get:info,provider:project` &raquo;
+### &laquo; `"role":"entity","base":"gitlab","cmd":"save","name":"project","zone":"provider"` &raquo;
+
+Update Gitlab project data from an entity, through a project id, informed as a parameter.
+
+
+
+----------
+### &laquo; `"sys":"provider","get":"info","provider":"gitlab"` &raquo;
 
 Get information about the provider.
 

@@ -1,7 +1,7 @@
 "use strict";
 /* Copyright © 2021 Seneca Project Contributors, MIT License. */
 Object.defineProperty(exports, "__esModule", { value: true });
-const docs = {
+const messages = {
     get_info: {
         desc: 'Get information about the provider.',
     },
@@ -12,8 +12,15 @@ const docs = {
         desc: 'Update Gitlab project data from an entity, through a project id, informed as a parameter.',
     },
 };
-exports.default = docs;
+const sections = {};
+exports.default = {
+    messages,
+    sections
+};
 if ('undefined' !== typeof (module)) {
-    module.exports = docs;
+    module.exports = {
+        messages,
+        sections
+    };
 }
 //# sourceMappingURL=GitlabProvider-doc.js.map
