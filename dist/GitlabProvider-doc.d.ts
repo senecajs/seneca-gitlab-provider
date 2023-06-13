@@ -1,12 +1,15 @@
-declare const docs: {
-    get_info: {
-        desc: string;
+declare const _default: {
+    messages: {
+        get_info: {
+            desc: string;
+        };
+        load_project: {
+            desc: string;
+        };
+        save_project: {
+            desc: string;
+        };
     };
-    load_project: {
-        desc: string;
-    };
-    save_project: {
-        desc: string;
-    };
+    sections: {};
 };
-export default docs;
+export default _default;
